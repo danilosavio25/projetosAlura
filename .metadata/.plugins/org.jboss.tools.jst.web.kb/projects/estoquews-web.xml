@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kb-project>
+ <depends-on-projects/>
+ <used-by-projects/>
+ <paths/>
+ <validation>
+  <core validator-id="jsf-verification"/>
+  <core validator-id="jboss.cdi.core">
+   <linked-resource
+    name="%1;%2;%3;%4;%5;%6;%7;%8;%9;%10;%11;%12;%13;%14;" path="%0"/>
+  </core>
+  <core validator-id="batch-verification"/>
+  <el/>
+ </validation>
+ <aliases>
+  <alias path="/estoquews-web/src/br/com/caelum/estoque/ws/Item.java" value="%1"/>
+  <alias
+   path="/estoquews-web/src/br/com/caelum/estoque/ws/EstoqueWSService.java" value="%2"/>
+  <alias
+   path="/estoquews-web/src/br/com/caelum/estoque/ws/TodosOsItensResponse.java" value="%3"/>
+  <alias
+   path="/estoquews-web/src/br/com/caelum/estoque/ws/TokenUsuario.java" value="%4"/>
+  <alias
+   path="/estoquews-web/src/br/com/caelum/estoque/ws/AutorizacaoFault.java" value="%5"/>
+  <alias
+   path="/estoquews-web/src/br/com/caelum/estoque/ws/EstoqueWS.java" value="%6"/>
+  <alias
+   path="/estoquews-web/src/br/com/caelum/estoque/ws/CadastrarItem.java" value="%7"/>
+  <alias path="/estoquews-web/src/br/com/caelum/estoque/ws/Filtros.java" value="%8"/>
+  <alias path="/estoquews-web/src/br/com/caelum/estoque/ws/Filtro.java" value="%9"/>
+  <alias
+   path="/estoquews-web/src/br/com/caelum/estoque/ws/CadastrarItemResponse.java" value="%10"/>
+  <alias
+   path="/estoquews-web/src/br/com/caelum/estoque/ws/ObjectFactory.java" value="%11"/>
+  <alias
+   path="/estoquews-web/src/br/com/caelum/estoque/ws/package-info.java" value="%0"/>
+  <alias
+   path="/estoquews-web/src/br/com/caelum/estoque/ws/TipoItem.java" value="%12"/>
+  <alias
+   path="/estoquews-web/src/br/com/caelum/estoque/ws/ListaItens.java" value="%13"/>
+  <alias
+   path="/estoquews-web/src/br/com/caelum/estoque/ws/TodosOsItens.java" value="%14"/>
+ </aliases>
+ <includes/>
+ <uris/>
+</kb-project>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;br.com.caelum.estoque.cliente&apos; to &apos;estoque-cliente/src&apos;&#x0D;&#x0A;- Original project: &apos;estoquews-web&apos;&#x0D;&#x0A;- Destination element: &apos;estoque-cliente/src&apos;&#x0D;&#x0A;- Original element: &apos;estoquews-web/src/br.com.caelum.estoque.cliente&apos;" description="Copy package" destination="=estoque-cliente/src" element1="/src&lt;br.com.caelum.estoque.cliente" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1442607236915" version="1.0"/>
+</session>

@@ -1,0 +1,29 @@
+!SESSION 
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 0 2015-09-18 16:44:06.015
+!MESSAGE The server "WildFly 9.x (Experimental)" requires a JDK to run properly. The VM used to launch this server is not recognized as a valid JDK. C:\Program Files\Java\jre1.8.0_60 
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 0 2015-09-18 16:45:02.363
+!MESSAGE Module estoquews-web on WildFly 9.x (Experimental) not yet fully deployed. Waiting...
+
+!ENTRY org.jboss.ide.eclipse.as.core 2 0 2015-09-18 16:45:22.387
+!MESSAGE Module estoquews-web on WildFly 9.x (Experimental) still not ready to be shown in browser. Aborting delay.
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 0 2015-09-18 16:46:44.743
+!MESSAGE The server "WildFly 9.x (Experimental)" requires a JDK to run properly. The VM used to launch this server is not recognized as a valid JDK. C:\Program Files\Java\jre1.8.0_60 
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2015-09-18 16:46:46.035
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2015-09-18 16:47:05.267
+!MESSAGE Server Startup Succeeded
+!SESSION 
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 0 2015-09-18 17:22:10.132
+!MESSAGE The server "WildFly 9.x (Experimental)" requires a JDK to run properly. The VM used to launch this server is not recognized as a valid JDK. C:\Program Files\Java\jre1.8.0_60 
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2015-09-18 17:22:11.656
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842769 2015-09-18 17:22:17.362
+!MESSAGE Server Startup Succeeded
