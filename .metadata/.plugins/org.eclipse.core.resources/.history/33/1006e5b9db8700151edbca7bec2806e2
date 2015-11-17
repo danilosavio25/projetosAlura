@@ -1,0 +1,21 @@
+package br.com.caelum.leilao.dominio;
+
+public class Avaliador {
+
+	private double maiorDeTodos = Double.NEGATIVE_INFINITY;
+	private double menorDeTodos = Double.POSITIVE_INFINITY;
+	
+	
+	public void avalia(Leilao leilao){
+		List<Lances> lances = leilao.getLances();
+		for(){
+			
+		}
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

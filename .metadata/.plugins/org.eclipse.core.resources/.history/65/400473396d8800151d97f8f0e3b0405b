@@ -1,0 +1,73 @@
+package br.com.caelum.leilao.testes;
+
+import static org.junit.Assert.*;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+import br.com.caelum.leilao.dominio.Avaliador;
+import br.com.caelum.leilao.dominio.Lance;
+import br.com.caelum.leilao.dominio.Leilao;
+import br.com.caelum.leilao.dominio.Usuario;
+
+public class AvaliadorTest {
+
+	@Test
+	public void deveEntenderMaiorEMenorEmOrdemAleatoria() {
+		
+		Usuario mario = new Usuario("Mario");
+		Usuario lucia = new Usuario("Lucia");
+		Usuario joao = new Usuario("Joao");
+		
+		Leilao leilao = new Leilao("Guitarra Gibson Zakk Wykde");
+		leilao.propoe(new Lance(mario, 500.0));
+		leilao.propoe(new Lance(lucia, 300.00));
+		leilao.propoe(new Lance(joao, 600.0));
+
+		Avaliador leiloeiro = new Avaliador();
+		leiloeiro.avalia(leilao);
+		double maiorEsperado = 600.0;
+		double menorEsperado = 300.0;
+		assertEquals(maiorEsperado, leiloeiro.getMaiorDeTodos(), 0.00001);
+		assertEquals(menorEsperado, leiloeiro.getMenorDeTodos(), 0.00001);
+		
+	}
+
+	@Test
+	public void deveEntenderMediaEmOrdemAleatoria() {
+		
+		Usuario mario = new Usuario("Mario");
+		Usuario lucia = new Usuario("Lucia");
+		Usuario joao = new Usuario("Joao");
+		Lance lance1 = new Lance(mario, 500.0);
+		Lance lance2 = new Lance(lucia, 300.00);
+		Lance lance3 = new Lance(joao, 600.0);
+		Leilao leilao = new Leilao("Guitarra Gibson Zakk Wykde");
+		leilao.propoe(lance1);
+		leilao.propoe(lance2);
+		leilao.propoe(lance3);
+
+		Avaliador leiloeiro = new Avaliador();
+		leiloeiro.avalia(leilao);
+		double mediaEsperada = (lance1.getValor() + lance2.getValor() + lance3.getValor())/3;
+		assertEquals(mediaEsperada, leiloeiro.media(leilao), 0.00001);
+		
+	}
+	
+	@Test
+	public void deveEntenderUnicoLance() {
+		
+		Usuario mario = new Usuario("Mario");
+		Lance lance1 = new Lance(mario, 500.0);
+		Leilao leilao = new Leilao("Guitarra Gibson Zakk Wykde");
+		leilao.propoe(lance1);
+
+		Avaliador leiloeiro = new Avaliador();
+		leiloeiro.avalia(leilao);
+		
+		assertEquals(500.0, leiloeiro.getMaiorDeTodos(), 0.00001);
+		assertEquals(500.0, leiloeiro.getMenorDeTodos(), 0.00001);
+		
+	}
+	
+}

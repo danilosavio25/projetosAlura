@@ -1,0 +1,18 @@
+package br.com.caelum.financas.jpa;
+
+public class TestaConsultaComNamedQuery {
+
+	public static void main(String[] args) {
+		
+		ntityManager manager = new JPAUtil().getEntityManager();
+
+		Conta conta = new Conta();
+		conta.setId(3);
+
+		MovimentacaoDao dao = new MovimentacaoDao(manager);
+		Long total = dao.totalDeMovimentacoes(conta);
+
+		System.out.println(total);
+	}
+
+}

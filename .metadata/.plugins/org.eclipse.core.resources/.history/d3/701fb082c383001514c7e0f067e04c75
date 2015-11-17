@@ -1,7 +1,0 @@
-package br.com.alura.gerenciador.web;
-
-import javax.servlet.Filter;
-
-public class FiltroDeAuditoria implements Filter {
-	
-}

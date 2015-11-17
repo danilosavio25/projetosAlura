@@ -1,0 +1,10 @@
+package br.com.caelum.financas.jpa;
+
+public class TesteConsultaDao {
+
+	public static void main(String[] args) {
+		 MovimentacaoDao dao = new MovimentacaoDao(manager);
+		    Double media = dao.mediaDaConta(conta);
+	}
+
+}

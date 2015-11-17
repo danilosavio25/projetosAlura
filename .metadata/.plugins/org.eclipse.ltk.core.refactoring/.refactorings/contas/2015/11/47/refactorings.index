@@ -1,0 +1,17 @@
+1447674806240	Delete element
+1447674817536	Rename package 'src.br.com.caelum.contas'
+1447674823007	Rename package 'src.br.com.caelum.contas.controller'
+1447674830739	Rename package 'src.br.com.caelum.contas.dao'
+1447674839330	Rename package 'src.br.com.caelum.contas.interceptor'
+1447674844785	Rename package 'src.br.com.caelum.contas.modelo'
+1447674867394	Delete element
+1447674878015	Delete element
+1447674881280	Delete element
+1447677810908	Move 'conta-adicionada.jsp' to 'conta'
+1447677814733	Move 'formulario.jsp' to 'conta'
+1447677829013	Move 'infra-ok.jsp' to 'infra'
+1447680954979	Move 'lista.jsp' to 'views'
+1447681007075	Move 'lista.jsp' to 'conta'
+1447699320816	Move 'resources' to 'WebContent'
+1447700682435	Rename type 'UsuarioController'
+1447701065455	Move 'login.jsp' to 'views'

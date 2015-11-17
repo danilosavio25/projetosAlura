@@ -1,0 +1,28 @@
+package br.com.caelum.financas.jpa;
+
+import javax.persistence.EntityManager;
+
+import br.com.caelum.financas.modelo.Conta;
+import br.com.caelum.financas.util.JPAUtil;
+
+public class TesteJPARelacionamento {
+
+    public static void main(String[] args) {
+
+        Conta conta = new Conta();
+        conta.setTitular("Ana Maria");
+        conta.setBanco("Itau");
+        conta.setNumero("54321");
+        conta.setAgencia("111");
+
+        EntityManager manager = new JPAUtil().getEntityManager();
+
+        manager.getTransaction().begin();
+
+        manager.persist(conta);
+
+        manager.getTransaction().commit();
+
+        manager.close();
+    }
+}

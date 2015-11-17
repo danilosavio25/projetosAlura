@@ -1,6 +1,0 @@
-package br.com.alura.gerenciador.web;
-
-public interface Tarefa {
-    String executa(HttpServletRequest request, HttpServletResponse response);
-
-}

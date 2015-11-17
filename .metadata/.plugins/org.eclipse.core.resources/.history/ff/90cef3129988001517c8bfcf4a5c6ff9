@@ -1,0 +1,233 @@
+package br.com.caelum.leilao.testes;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItems;
+import static org.junit.Assert.assertEquals;
+
+import java.util.List;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import br.com.caelum.leilao.builder.CriadorDeLeilao;
+import br.com.caelum.leilao.dominio.Avaliador;
+import br.com.caelum.leilao.dominio.Lance;
+import br.com.caelum.leilao.dominio.Leilao;
+import br.com.caelum.leilao.dominio.Usuario;
+
+public class AvaliadorTest {
+
+	private Avaliador leiloeiro;
+	 private Usuario maria;
+	    private Usuario jose;
+	    private Usuario joao;
+
+	@After
+	public void finaliza() {
+	}
+	
+	@BeforeClass
+	public static void init(){
+	}
+	
+	@AfterClass
+	public static void destroy(){
+	}
+	
+
+	    @Before
+	    public void setUp() {
+	        this.leiloeiro = new Avaliador();
+	        this.joao = new Usuario("João");
+	        this.jose = new Usuario("José");
+	        this.maria = new Usuario("Maria");
+	    }
+
+	    @Test
+	    public void deveEntenderLancesEmOrdemCrescente() {
+
+	        Leilao leilao = new CriadorDeLeilao()
+	            .para("Playstation 3 Novo")
+	            .lance(joao, 250)
+	            .lance(jose, 300)
+	            .lance(maria, 400)
+	            .constroi();
+
+	        leiloeiro.avalia(leilao);
+
+	        assertThat(leiloeiro.getMenorLance(), equalTo(250.0));
+	        assertThat(leiloeiro.getMaiorLance(), equalTo(400.0));
+	    }
+
+	    @Test
+	    public void deveEntenderLeilaoComApenasUmLance() {
+	        Leilao leilao = new CriadorDeLeilao()
+	        .para("Playstation 3 Novo")
+	        .lance(joao, 1000)
+	        .constroi();
+
+	        leiloeiro.avalia(leilao);
+
+	        assertThat(leiloeiro.getMenorLance(), equalTo(leiloeiro.getMaiorLance()));
+	    }
+
+	    @Test
+	    public void deveEncontrarOsTresMaioresLances() {
+	        Leilao leilao = new CriadorDeLeilao()
+	            .para("Playstation 3 Novo")
+	            .lance(joao, 100)
+	            .lance(maria, 200)
+	            .lance(joao, 300)
+	            .lance(maria, 400)
+	            .constroi();
+
+	        leiloeiro.avalia(leilao);
+
+	        List<Lance> maiores = leiloeiro.getTresMaiores();
+	        assertThat(3, equalTo(maiores.size()));
+
+	        assertThat(maiores, hasItems(
+	                new Lance(maria, 400), 
+	                new Lance(joao, 300),
+	                new Lance(maria, 200)
+	        ));    
+	    }
+	
+	
+	@Test
+	public void deveEntenderMaiorEMenorEmOrdemAleatoria() {
+		
+		Leilao leilao = new CriadorDeLeilao()
+	            .para("Guitarra Gibson Zakk Wykde")
+	            .lance(new Usuario("mario"), 500.0)
+	            .lance(new Usuario("lucia"), 300.00)
+	            .lance(new Usuario("joao"), 600.0)
+	            .constroi();
+
+
+		leiloeiro.avalia(leilao);
+		double maiorEsperado = 600.0;
+		double menorEsperado = 300.0;
+		assertEquals(maiorEsperado, leiloeiro.getMaiorLance(), 0.00001);
+		assertEquals(menorEsperado, leiloeiro.getMenorLance(), 0.00001);
+		
+	}
+
+	@Test
+	public void deveEntenderMaiorEMenorEmOrdemCrescente() {
+		
+		Usuario mario = new Usuario("Mario");
+		Usuario lucia = new Usuario("Lucia");
+		Usuario joao = new Usuario("Joao");
+		
+		Leilao leilao = new Leilao("Guitarra Gibson Zakk Wykde");
+		leilao.propoe(new Lance(lucia, 300.00));
+		leilao.propoe(new Lance(mario, 500.0));
+		leilao.propoe(new Lance(joao, 600.0));
+
+		leiloeiro.avalia(leilao);
+		double maiorEsperado = 600.0;
+		double menorEsperado = 300.0;
+		assertEquals(maiorEsperado, leiloeiro.getMaiorLance(), 0.00001);
+		assertEquals(menorEsperado, leiloeiro.getMenorLance(), 0.00001);
+		
+	}
+	
+	
+	@Test
+	public void deveEntenderMediaEmOrdemAleatoria() {
+		
+		Usuario mario = new Usuario("Mario");
+		Usuario lucia = new Usuario("Lucia");
+		Usuario joao = new Usuario("Joao");
+		Lance lance1 = new Lance(mario, 500.0);
+		Lance lance2 = new Lance(lucia, 300.00);
+		Lance lance3 = new Lance(joao, 600.0);
+		Leilao leilao = new Leilao("Guitarra Gibson Zakk Wykde");
+		leilao.propoe(lance1);
+		leilao.propoe(lance2);
+		leilao.propoe(lance3);
+
+		leiloeiro.avalia(leilao);
+		double mediaEsperada = (lance1.getValor() + lance2.getValor() + lance3.getValor())/3;
+		assertEquals(mediaEsperada, leiloeiro.media(leilao), 0.00001);
+		
+	}
+	
+	@Test
+	public void deveEntenderUnicoLance() {
+		
+		Usuario mario = new Usuario("Mario");
+		Lance lance1 = new Lance(mario, 500.0);
+		Leilao leilao = new Leilao("Guitarra Gibson Zakk Wykde");
+		leilao.propoe(lance1);
+
+		leiloeiro.avalia(leilao);
+		
+		assertEquals(500.0, leiloeiro.getMaiorLance(), 0.00001);
+		assertEquals(500.0, leiloeiro.getMenorLance(), 0.00001);
+		
+	}
+	
+	@Test
+	public void deveEntenderTresMaiores5Itens() {
+		
+		Usuario mario = new Usuario("Mario");
+		Usuario lucia = new Usuario("Lucia");
+		Usuario joao = new Usuario("Joao");
+		Usuario agnes = new Usuario("Agnes");
+		Usuario kleiton = new Usuario("Kleiton");
+		
+		Leilao leilao = new Leilao("Guitarra Gibson Zakk Wykde");
+		leilao.propoe(new Lance(mario, 500.0));
+		leilao.propoe(new Lance(lucia, 300.00));
+		leilao.propoe(new Lance(joao, 600.0));
+		leilao.propoe(new Lance(agnes, 400.00));
+		leilao.propoe(new Lance(kleiton, 700.0));
+
+		leiloeiro.pegaOsMaioresNo(leilao);
+		assertEquals(3, leiloeiro.getTresMaiores().size(), 0.00001);
+		assertEquals(700.0, leiloeiro.getTresMaiores().get(0).getValor(), 0.00001);
+		assertEquals(600.0, leiloeiro.getTresMaiores().get(1).getValor(), 0.00001);
+		assertEquals(500.0, leiloeiro.getTresMaiores().get(2).getValor(), 0.00001);
+		
+	}
+	
+	@Test
+	public void deveEntenderTresMaiores2Itens() {
+		
+		Usuario mario = new Usuario("Mario");
+		Usuario lucia = new Usuario("Lucia");
+		
+		Leilao leilao = new Leilao("Guitarra Gibson Zakk Wykde");
+		leilao.propoe(new Lance(mario, 500.0));
+		leilao.propoe(new Lance(lucia, 300.00));
+
+		leiloeiro.pegaOsMaioresNo(leilao);
+		assertEquals(2, leiloeiro.getTresMaiores().size(), 0.00001);
+		assertEquals(500.0, leiloeiro.getTresMaiores().get(0).getValor(), 0.00001);
+		assertEquals(300.0, leiloeiro.getTresMaiores().get(1).getValor(), 0.00001);
+		
+	}
+	
+	@Test
+	public void deveEntenderTresMaioresSemitens() {
+		Leilao leilao = new Leilao("Guitarra Gibson Zakk Wykde");
+		leiloeiro.pegaOsMaioresNo(leilao);
+		assertEquals(0, leiloeiro.getTresMaiores().size(), 0.00001);
+	
+	}
+	
+	@Test(expected=RuntimeException.class)
+	public void naoDeveAvaliarLeilaoSemLance(){
+		 Leilao leilao = new CriadorDeLeilao()
+			        .para("Playstation 3 Novo")
+			        .constroi();
+
+			    leiloeiro.avalia(leilao);
+	}
+}

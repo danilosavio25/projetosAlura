@@ -1,0 +1,12 @@
+package br.com.caelum.contas.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+public class LoginController {
+	
+	@RequestMapping("/efetuaLogin")
+	public String efetuaLogin(){
+		return "menu";
+	}
+	
+}

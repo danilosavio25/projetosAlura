@@ -1,0 +1,12 @@
+package br.com.caelum.leilao.testes;
+
+import org.junit.Test;
+
+public class LanceTest {
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void naoDeveReceberValor0{
+		
+	}
+	
+}

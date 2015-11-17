@@ -1,0 +1,2 @@
+2015-11-11 15:18:59,404 [Worker-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/thoughtworks/qdox/qdox/1.12/qdox-1.12-sources.jar
+2015-11-11 15:18:59,837 [Worker-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/thoughtworks/qdox/qdox/1.12/qdox-1.12-sources.jar
